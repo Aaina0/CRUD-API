@@ -1,7 +1,15 @@
-import Product from "../database/models/productModel.js";
+import Product from "../models/productModel.js";
 
 const createProduct = async (req, res) => {
   try {
+    const { name, quantity, price } = req.body;
+    if (!name || !quantity || !price)
+      return res
+        .status(400)
+        .json({
+          status: false,
+          message: "name quantity and price are required",
+        });
     const product = await Product.create(req.body);
     res.status(200).json(product);
   } catch (error) {

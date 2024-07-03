@@ -7,14 +7,14 @@ import {
   updateProduct,
 } from "../controller/productController.js";
 
-const router = express.Router();
+const app = express();
 
-router.post("/api/products", createProduct);
-router.get("/api/products", findProduct);
-router.get("/api/products/:id", findbyId);
+app.post("/api/products", createProduct);
+app.get("/api/products", findProduct);
+app.get("/api/products/:id", findbyId);
 // update product
-router.put("/api/products/:id", updateProduct);
+app.put("/api/products/:id", updateProduct);
 //delete product
-router.delete("/api/products/:id", deleteProduct);
+app.delete("/api/products/:id", deleteProduct);
 
-export default router;
+export default app;
